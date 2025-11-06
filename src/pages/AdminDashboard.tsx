@@ -1,4 +1,3 @@
-// src/pages/AdminDashboard.tsx
 import { useEffect, useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import MarkdownEditor from "../components/admin/MarkdownEditor"
@@ -11,7 +10,7 @@ import AdminNewsletterBlock from "../components/admin/AdminNewsletterBlock"
 
 // Posts (blog / travel)
 import {
-  adminGetPosts,   // admin: tout voir (brouillons + dates futures)
+  adminGetPosts,
   upsertPost,
   deletePost,
   DraftPost,
@@ -254,7 +253,7 @@ export default function AdminDashboard() {
       setLoading(true)
       await upsertPost({
         ...postForm,
-        isDraft: false,   // on planifie comme “non draft” + date future
+        isDraft: false,
       })
       alert("Scheduled ✅ This post will go live on the selected date.")
       setPostForm({ ...emptyPost })
@@ -552,8 +551,9 @@ export default function AdminDashboard() {
 
               <div className="grid sm:grid-cols-3 gap-4">
                 <div>
-                  <label className="text-sm text-muted">Section</label>
+                  <label className="text-sm text-muted" htmlFor="post-section">Section</label>
                   <select
+                    id="post-section"
                     className="w-full rounded-xl border px-3 py-2"
                     style={{ borderColor: "var(--border)" }}
                     value={postForm.section || "blog"}
@@ -564,8 +564,9 @@ export default function AdminDashboard() {
                   </select>
                 </div>
                 <div className="sm:col-span-2">
-                  <label className="text-sm text-muted">Title *</label>
+                  <label className="text-sm text-muted" htmlFor="post-title">Title *</label>
                   <input
+                    id="post-title"
                     className="w-full rounded-xl border px-3 py-2"
                     style={{ borderColor: "var(--border)" }}
                     value={postForm.title}
@@ -577,8 +578,9 @@ export default function AdminDashboard() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm text-muted">Slug *</label>
+                  <label className="text-sm text-muted" htmlFor="post-slug">Slug *</label>
                   <input
+                    id="post-slug"
                     className="w-full rounded-xl border px-3 py-2"
                     style={{ borderColor: "var(--border)" }}
                     value={postForm.slug}
@@ -587,8 +589,9 @@ export default function AdminDashboard() {
                   />
                 </div>
                 <div>
-                  <label className="text-sm text-muted">Category</label>
+                  <label className="text-sm text-muted" htmlFor="post-category">Category</label>
                   <input
+                    id="post-category"
                     className="w-full rounded-xl border px-3 py-2"
                     style={{ borderColor: "var(--border)" }}
                     value={(postForm as any).category ?? ""}
@@ -598,8 +601,9 @@ export default function AdminDashboard() {
               </div>
 
               <div>
-                <label className="text-sm text-muted">Excerpt</label>
+                <label className="text-sm text-muted" htmlFor="post-excerpt">Excerpt</label>
                 <input
+                  id="post-excerpt"
                   className="w-full rounded-xl border px-3 py-2"
                   style={{ borderColor: "var(--border)" }}
                   value={postForm.excerpt}
@@ -609,9 +613,10 @@ export default function AdminDashboard() {
 
               {/* Image + upload */}
               <div>
-                <label className="text-sm text-muted">Cover image</label>
+                <label className="text-sm text-muted" htmlFor="post-image">Cover image</label>
                 <div className="flex gap-2">
                   <input
+                    id="post-image"
                     className="w-full rounded-xl border px-3 py-2"
                     style={{ borderColor: "var(--border)" }}
                     placeholder="URL ou /image/posts/xxx.jpg"
@@ -641,7 +646,10 @@ export default function AdminDashboard() {
                 {postForm.image && (
                   <img
                     src={postForm.image}
-                    className="mt-2 h-24 rounded-lg border"
+                    alt="Post cover preview"
+                    width={320}
+                    height={180}
+                    className="mt-2 h-24 rounded-lg border object-cover"
                     style={{ borderColor: "var(--border)" }}
                   />
                 )}
@@ -649,8 +657,10 @@ export default function AdminDashboard() {
 
               {/* Vidéo */}
               <div>
-                <label className="text-sm text-muted">Video URL (YouTube/Vimeo…)</label>
+                <label className="text-sm text-muted" htmlFor="post-video-url">Video URL (YouTube/Vimeo…)</label>
                 <input
+                  id="post-video-url"
+                  type="url"
                   className="w-full rounded-xl border px-3 py-2"
                   style={{ borderColor: "var(--border)" }}
                   value={postForm.video_url || ""}
@@ -661,8 +671,9 @@ export default function AdminDashboard() {
               {/* Planification & brouillon */}
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm text-muted">Publish at</label>
+                  <label className="text-sm text-muted" htmlFor="post-publish-at">Publish at</label>
                   <input
+                    id="post-publish-at"
                     type="datetime-local"
                     className="w-full rounded-xl border px-3 py-2"
                     style={{ borderColor: "var(--border)" }}
@@ -685,8 +696,9 @@ export default function AdminDashboard() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm text-muted">Reading time</label>
+                  <label className="text-sm text-muted" htmlFor="post-reading-time">Reading time</label>
                   <input
+                    id="post-reading-time"
                     className="w-full rounded-xl border px-3 py-2"
                     style={{ borderColor: "var(--border)" }}
                     value={postForm.reading_time || ""}
@@ -694,8 +706,9 @@ export default function AdminDashboard() {
                   />
                 </div>
                 <div>
-                  <label className="text-sm text-muted">Author</label>
+                  <label className="text-sm text-muted" htmlFor="post-author">Author</label>
                   <input
+                    id="post-author"
                     className="w-full rounded-xl border px-3 py-2"
                     style={{ borderColor: "var(--border)" }}
                     value={postForm.author || ""}
@@ -771,8 +784,9 @@ export default function AdminDashboard() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm text-muted">Title *</label>
+                  <label className="text-sm text-muted" htmlFor="ebook-title">Title *</label>
                   <input
+                    id="ebook-title"
                     className="w-full rounded-xl border px-3 py-2"
                     style={{ borderColor: "var(--border)" }}
                     value={ebookForm.title || ""}
@@ -781,8 +795,9 @@ export default function AdminDashboard() {
                   />
                 </div>
                 <div>
-                  <label className="text-sm text-muted">Slug *</label>
+                  <label className="text-sm text-muted" htmlFor="ebook-slug">Slug *</label>
                   <input
+                    id="ebook-slug"
                     className="w-full rounded-xl border px-3 py-2"
                     style={{ borderColor: "var(--border)" }}
                     value={ebookForm.slug || ""}
@@ -793,8 +808,9 @@ export default function AdminDashboard() {
               </div>
 
               <div>
-                <label className="text-sm text-muted">Excerpt</label>
+                <label className="text-sm text-muted" htmlFor="ebook-excerpt">Excerpt</label>
                 <input
+                  id="ebook-excerpt"
                   className="w-full rounded-xl border px-3 py-2"
                   style={{ borderColor: "var(--border)" }}
                   value={ebookForm.excerpt || ""}
@@ -804,8 +820,10 @@ export default function AdminDashboard() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm text-muted">Cover image URL</label>
+                  <label className="text-sm text-muted" htmlFor="ebook-cover">Cover image URL</label>
                   <input
+                    id="ebook-cover"
+                    type="url"
                     className="w-full rounded-xl border px-3 py-2"
                     style={{ borderColor: "var(--border)" }}
                     value={ebookForm.cover_image || ""}
@@ -813,8 +831,10 @@ export default function AdminDashboard() {
                   />
                 </div>
                 <div>
-                  <label className="text-sm text-muted">File URL (PDF/ePub)</label>
+                  <label className="text-sm text-muted" htmlFor="ebook-file">File URL (PDF/ePub)</label>
                   <input
+                    id="ebook-file"
+                    type="url"
                     className="w-full rounded-xl border px-3 py-2"
                     style={{ borderColor: "var(--border)" }}
                     value={ebookForm.file_url || ""}
@@ -825,8 +845,9 @@ export default function AdminDashboard() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm text-muted">Price</label>
+                  <label className="text-sm text-muted" htmlFor="ebook-price">Price</label>
                   <input
+                    id="ebook-price"
                     type="number"
                     step="0.01"
                     className="w-full rounded-xl border px-3 py-2"
@@ -836,8 +857,9 @@ export default function AdminDashboard() {
                   />
                 </div>
                 <div>
-                  <label className="text-sm text-muted">Author</label>
+                  <label className="text-sm text-muted" htmlFor="ebook-author">Author</label>
                   <input
+                    id="ebook-author"
                     className="w-full rounded-xl border px-3 py-2"
                     style={{ borderColor: "var(--border)" }}
                     value={ebookForm.author || ""}

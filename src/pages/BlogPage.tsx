@@ -1,4 +1,3 @@
-// src/pages/BlogPage.tsx
 import { useEffect, useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import { getBlogPosts, type Post } from "../data/postStore"
@@ -47,22 +46,7 @@ export default function BlogPage() {
           className="w-full sm:w-96 rounded-xl border px-3 py-2 bg-[var(--surface)]"
           style={{ borderColor: "var(--border)" }}
         />
-
-        {/* (Optionnel) Filtre de catégories si tu veux l’utiliser */}
-        {/* <div className="flex gap-2">
-          {categories.map(c => (
-            <button
-              key={c}
-              onClick={() => setCat(c)}
-              className={`px-3 py-1.5 rounded-full border text-sm ${
-                cat === c ? "bg-[var(--accent)] text-white border-transparent" : "bg-[var(--surface)]"
-              }`}
-              style={{ borderColor: "var(--border)" }}
-            >
-              {c}
-            </button>
-          ))}
-        </div> */}
+        {/* (optionnel) filtres de catégories si tu veux les réactiver plus tard */}
       </div>
 
       {err && <p className="text-red-600">{err}</p>}
@@ -70,16 +54,18 @@ export default function BlogPage() {
 
       <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {list.map((post) => {
-          // Safety: skip cards with empty slug to avoid broken /blog/ links
           const hasSlug = !!post.slug
           const to = hasSlug ? `/blog/${encodeURIComponent(post.slug)}` : undefined
+          const imgSrc = post.image || "/image/placeholder.jpg"
 
           const CardInner = (
             <>
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src={post.image || "/image/placeholder.jpg"}
-                  alt={post.title}
+                  src={imgSrc}
+                  alt={post.title || "Blog cover"}
+                  width={1200}
+                  height={900}
                   loading="lazy"
                   decoding="async"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -91,7 +77,9 @@ export default function BlogPage() {
                     {post.category ?? "Blog"}
                   </span>
                   <span>•</span>
-                  <time dateTime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
+                  <time dateTime={post.date}>
+                    {new Date(post.date).toLocaleDateString()}
+                  </time>
                   {post.reading_time && (
                     <>
                       <span>•</span>
@@ -117,11 +105,7 @@ export default function BlogPage() {
               style={{ borderColor: "var(--border)" }}
             >
               {hasSlug ? (
-                <Link
-                  to={to!}
-                  className="block"
-                  aria-label={`Read article: ${post.title}`}
-                >
+                <Link to={to!} className="block" aria-label={`Read article: ${post.title}`}>
                   {CardInner}
                 </Link>
               ) : (

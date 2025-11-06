@@ -10,6 +10,10 @@ export default function WellnessPage() {
           src="/image/coverWellness.png"
           alt="Wellness hero banner with calm fitness atmosphere"
           className="absolute inset-0 h-full w-full object-cover"
+          width={1920}
+          height={600}
+          decoding="async"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10" />
         <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 h-full flex items-end pb-10">
@@ -23,7 +27,7 @@ export default function WellnessPage() {
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
         <Reveal>
           <h2 className="text-2xl font-semibold italic" style={{ color: "var(--text)" }}>
-            “Wellness / Fit &amp; Well — Redefining the Modern Wellness Gym”
+            “Wellness / Fit &amp; Well - Redefining the Modern Wellness Gym”
           </h2>
           <p className="mt-3 text-lg leading-7 text-muted">
             A unique ecosystem blending 12 proprietary modalities that address fitness, recovery,
@@ -58,7 +62,7 @@ export default function WellnessPage() {
             </blockquote>
 
             <p className="mt-3 text-lg leading-7 text-muted italic">
-              “Wellness / Fit &amp; Well is not just a gym — it’s a holistic approach to health. A space
+              “Wellness / Fit &amp; Well is not just a gym, it’s a holistic approach to health. A space
               where fitness, recovery, and mindful living come together under one roof.”
             </p>
           </ul>
@@ -70,6 +74,8 @@ export default function WellnessPage() {
               alt="Concept diagram: mind & brain, strength and recovery integration"
               loading="lazy"
               decoding="async"
+              width={1200}
+              height={800}
               className="w-full h-[300px] object-contain rounded-lg shadow-md bg-white/80 p-2"
             />
             <img
@@ -77,6 +83,8 @@ export default function WellnessPage() {
               alt="Concept diagram: nutrition & lifestyle integration"
               loading="lazy"
               decoding="async"
+              width={1200}
+              height={800}
               className="w-full h-[300px] object-contain rounded-lg shadow-md bg-white/80 p-2"
             />
           </div>
@@ -97,8 +105,8 @@ export default function WellnessPage() {
           </ul>
 
           <p className="mt-3 text-lg leading-7 text-muted italic">
-            "When you partner with Joe Lewis, you’ll receive tailored consulting on layout, program
-            design, and business strategy to bring this vision to life."
+            “When you partner with Joe Lewis, you’ll receive tailored consulting on layout, program
+            design, and business strategy to bring this vision to life.”
           </p>
 
           <img
@@ -106,6 +114,8 @@ export default function WellnessPage() {
             alt="Program layout sketch illustrating spaces for strength, recovery and mindfulness"
             loading="lazy"
             decoding="async"
+            width={1600}
+            height={900}
             className="w-full h-[280px] object-contain rounded-lg p-4"
           />
         </Reveal>

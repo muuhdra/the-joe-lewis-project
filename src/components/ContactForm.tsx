@@ -1,9 +1,8 @@
-// src/components/ContactForm.tsx
+
 import { useState } from "react"
 
 type Props = {
   compact?: boolean
-  /** Make fields highly visible (white bg, stronger borders, clear focus) */
   emphasize?: boolean
 }
 
@@ -19,7 +18,6 @@ export default function ContactForm({ compact, emphasize }: Props) {
     if (!name.trim() || !email.trim() || !message.trim()) return
     try {
       setSending(true)
-      // TODO: plug your API/Supabase function here
       await new Promise(r => setTimeout(r, 800))
       setDone(true)
       setName(""); setEmail(""); setMessage("")

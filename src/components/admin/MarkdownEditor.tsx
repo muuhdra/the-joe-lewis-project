@@ -186,8 +186,8 @@ export default function MarkdownEditor({ value, onChange, slug, folder }: Props)
   function insertTwoUp() {
     const html = `
 <div class="jl-two">
-  <img src="/image/left.jpg" alt="" />
-  <img src="/image/right.jpg" alt="" />
+  <img src="/image/left.jpg" alt="left" loading="lazy" decoding="async" />
+  <img src="/image/right.jpg" alt="right" loading="lazy" decoding="async" />
 </div>
 `.trim()
     document.execCommand("insertHTML", false, html)
@@ -319,7 +319,7 @@ export default function MarkdownEditor({ value, onChange, slug, folder }: Props)
           outline: "none",
           background: "#ffffff",
           color: "var(--ink)",
-          fontFamily: 'ui-serif, Georgia, "Times New Roman", Times, serif', // same reading font
+          fontFamily: 'ui-serif, Georgia, "Times New Roman", Times, serif',
           fontSize: "16px",
         }}
         onInput={notify}

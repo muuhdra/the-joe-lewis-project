@@ -1,4 +1,4 @@
-const BUY_URL = "https://your-store-link.example.com/joe-lewis-ebook" // ← remplace par Gumroad/Payhip/Stripe
+const BUY_URL = "https://your-store-link.example.com/joe-lewis-ebook" // ← On remplace par Stripe une fois prêt
 
 export default function CheckoutPage() {
   return (

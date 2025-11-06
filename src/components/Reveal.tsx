@@ -2,10 +2,7 @@ import { useEffect, useRef, useState, PropsWithChildren } from "react"
 
 type Props = PropsWithChildren<{ delay?: number; y?: number; once?: boolean }>
 
-/**
- * Révèle son contenu quand il entre dans le viewport (fade + translateY).
- * Pas de dépendance externe.
- */
+
 export default function Reveal({ children, delay = 0, y = 24, once = true }: Props) {
   const ref = useRef<HTMLDivElement | null>(null)
   const [shown, setShown] = useState(false)

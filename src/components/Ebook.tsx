@@ -1,11 +1,9 @@
-// src/components/Ebook.tsx
 import Reveal from "./Reveal"
 import { Link } from "react-router-dom"
 
-// 🔧 Remplace si besoin
-const SUBSTACK_URL = "https://joelewis.substack.com"
+const SUBSTACK_URL = "https://joelewis274.substack.com"
 const RELEASE_LABEL = "Coming January 2026"
-const PDF_URL = "/downloads/samurai-ch1.pdf" // dépose le PDF dans /public/downloads/
+const PDF_URL = "/downloads/samurai-ch1.pdf"
 
 export default function Ebook() {
   return (
@@ -22,6 +20,10 @@ export default function Ebook() {
                 src="/image/LeSamurai.png"
                 alt="eBook cover"
                 className="h-[450px] w-[320px] rounded-2xl object-cover shadow-lg"
+                width={320}
+                height={450}
+                loading="lazy"
+                decoding="async"
               />
               {/* Badge Coming Soon */}
               <span className="absolute -top-3 -right-3 rounded-full bg-[var(--accent)] text-[var(--bg)] px-3 py-1 text-xs font-semibold shadow">
@@ -46,7 +48,6 @@ export default function Ebook() {
                 <Link to="/ebook/preview" className="btn btn-ghost">
                   Read Free Preview
                 </Link>
-
 
                 <button
                   type="button"

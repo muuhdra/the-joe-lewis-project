@@ -4,7 +4,7 @@ import ContactForm from "../components/ContactForm"
 export default function LetsChatPage() {
   return (
     <main style={{ background: "var(--bg)" }}>
-      {/* Hero compact */}
+
       <section className="py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
@@ -17,7 +17,7 @@ export default function LetsChatPage() {
         </div>
       </section>
 
-      {/* Corps identique à la section, avec le formulaire mis en avant */}
+
       <section className="pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
           <Reveal>
@@ -39,7 +39,7 @@ export default function LetsChatPage() {
                 <p className="text-sm text-[var(--ink)]/60">I usually answer within a day.</p>
               </div>
               <div className="p-5 lg:p-6">
-                {/* le composant existant, avec aspect renforcé */}
+
                 <ContactForm emphasize />
               </div>
             </div>

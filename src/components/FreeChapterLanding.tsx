@@ -1,10 +1,7 @@
-// src/pages/FreeChapterLanding.tsx
 import { Link } from "react-router-dom"
-import cover from "/image/LeSamurai.png"
 
-// 🔧 A remplir :
-const BEEHIIV_EMBED = "https://embeds.beehiiv.com/xxxxxxxx?slim=true" // ton embed Beehiiv
-const PDF_URL = "/downloads/samurai-ch1.pdf" // endroit où tu déposeras le PDF final
+const BEEHIIV_EMBED = "https://thejoelewisproject.beehiiv.com/"
+const PDF_URL = "/downloads/samurai-ch1.pdf"
 const RELEASE_LABEL = "Full eBook • Coming January 2026"
 
 export default function FreeChapterLanding() {
@@ -46,7 +43,7 @@ export default function FreeChapterLanding() {
 
         <div className="order-first md:order-last">
           <img
-            src={cover}
+            src="/image/LeSamurai.png"
             alt="eBook cover"
             className="w-full rounded-2xl shadow-lg object-cover"
           />

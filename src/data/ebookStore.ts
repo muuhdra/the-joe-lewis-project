@@ -1,4 +1,4 @@
-// src/data/ebookStore.ts
+
 import { supabase } from "../lib/supabase"
 
 export type Ebook = {
@@ -41,7 +41,7 @@ export async function getEbooks(): Promise<Ebook[]> {
   return (data ?? []).map(mapRow)
 }
 
-/** ADMIN upsert/delete */
+
 export async function upsertEbook(eb: Partial<Ebook>) {
   if (!eb.slug || !eb.title) throw new Error("Title & slug requis")
   const payload = {

@@ -1,5 +1,3 @@
-import portrait from "/image/joe.png" // ⚠️ remplace par ton image réelle
-
 export default function AboutPage() {
   return (
     <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-24">
@@ -7,7 +5,7 @@ export default function AboutPage() {
         {/* Portrait */}
         <div>
           <img
-            src={portrait}
+            src="/image/joe.png"
             alt="Joe Lewis"
             className="rounded-2xl shadow-lg"
           />
@@ -18,12 +16,11 @@ export default function AboutPage() {
           <h1 className="font-display text-2xl font-bold mb-4">
             Hightlights & Philosophy
           </h1>
-            <ul className="space-y-3 text-muted">
-              <li>✦ A voyagé dans plus de 40 pays</li>
-              <li>✦ Passionné par l’Ikigai et le Bushido</li>
-              <li>✦ Auteur de “The Path to Ikigai”</li>
-              <li>✦ Coach en bien-être et en voyage minimaliste</li>
-            </ul>
+          <ul className="space-y-3 text-muted">
+            <li>✦ Has traveled to more than 20+ countries</li>
+            <li>✦ Passionate about Ikigai and Bushido</li>
+            <li>✦ Wellness and minimalist travel coach</li>
+          </ul>
           <p className="mt-4 text-muted">
             Joe Lewis - Writer. Explorer. Wellness Warrior. U.S. Marine Corps Force Recon Warrior.
           </p>
@@ -68,16 +65,16 @@ export default function AboutPage() {
 
           <p>
             But my journey didn’t stop there. As a writer and storyteller, I created{" "}
-            <span className="italic">The Samurai Who Traveled Light</span>, an eBook that blends Bushido values with
+            <span className="italic">"The Samurai Who Traveled Light"</span>, an eBook that blends Bushido values with
             modern wellness and simplicity. It is part memoir, part guide, and part philosophy for
             living with less weight, more clarity and deeper meaning.
           </p>
 
           <p>I continue to explore new frontiers:</p>
           <ul className="list-disc list-inside space-y-2">
-            <li>Photography ; capturing untold stories across Asia.</li>
+            <li>Photography - capturing untold stories across Asia.</li>
             <li>
-              AI Tools &amp; Affiliates ; curating resources like Entrepedia to help entrepreneurs and
+              AI Tools &amp; Affiliates - curating resources like Entrepedia to help entrepreneurs and
               creators thrive in today’s digital world.
             </li>
           </ul>
@@ -89,6 +86,5 @@ export default function AboutPage() {
         </div>
       </section>
     </main>
-    )
+  )
 }
-

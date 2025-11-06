@@ -1,8 +1,6 @@
-// src/components/Navbar.tsx
 import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 
-// Helper: smooth scroll to #id on the homepage
 function scrollToId(hash: string) {
   const id = hash.replace("#", "")
   const el = document.getElementById(id)
@@ -23,44 +21,14 @@ function isActive(href: string, pathname: string) {
   return pathname === href
 }
 
-// ✅ Centralize social links and local icon paths here
-// Put your PNG/SVG files under `public/icons/` (or adjust the paths below)
 const socials = [
-  {
-    name: "Bluesky",
-    href: "https://bsky.app/profile/thejoelewisproject.bsky.social", // ⬅️ remplace par ton profil Bluesky
-    icon: "/image/bluesky.png",
-  },
-  {
-    name: "Pinterest",
-    href: "https://www.pinterest.com/1bulinb3rolefxsjc097171lep9ybz/?actingBusinessId=1044624213476167398", // ⬅️ remplace par ton profil Pinterest
-    icon: "/image/pinterest-logo.png",
-  },
-  {
-    name: "Facebook",
-    href: "https://www.facebook.com/profile.php?id=61581964299844",
-    icon: "/image/facebook.png",
-  },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/joefitasia/", // ⬅️ remplace par ton profil LinkedIn
-    icon: "/image/linkedin.png",
-  },
-  {
-    name: "Twitter",
-    href: "https://x.com/lewis1393497", // ⬅️ remplace par ton profil X/Twitter
-    icon: "/image/x.png",
-  },
-  {
-    name: "Threads",
-    href: "https://www.threads.com/@joefitasia", // ⬅️ remplace par ton profil Threads
-    icon: "/image/threads.png",
-  },
-  {
-    name: "Instagram",
-    href: "https://instagram.com/joelewis134", // ⬅️ remplace par ton profil Instagram
-    icon: "/image/instagram.png",
-  },
+  { name: "Bluesky",   href: "https://bsky.app/profile/thejoelewisproject.bsky.social", icon: "/image/bluesky.png" },
+  { name: "Pinterest", href: "https://www.pinterest.com/1bulinb3rolefxsjc097171lep9ybz/?actingBusinessId=1044624213476167398", icon: "/image/pinterest-logo.png" },
+  { name: "Facebook",  href: "https://www.facebook.com/profile.php?id=61581964299844", icon: "/image/facebook.png" },
+  { name: "LinkedIn",  href: "https://www.linkedin.com/in/joefitasia/", icon: "/image/linkedin.png" },
+  { name: "Twitter",   href: "https://x.com/lewis1393497", icon: "/image/x.png" },
+  { name: "Threads",   href: "https://www.threads.com/@joefitasia", icon: "/image/threads.png" },
+  { name: "Instagram", href: "https://instagram.com/joelewis134", icon: "/image/instagram.png" },
 ] as const
 
 export default function Navbar() {
@@ -81,7 +49,6 @@ export default function Navbar() {
   function handleNav(href: string) {
     const isHash = href.startsWith("#")
 
-    // Home -> scroll to top if already on /
     if (href === "/" && pathname === "/") {
       scrollToTop()
       setOpen(false)
@@ -102,9 +69,7 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    const onResize = () => {
-      if (window.innerWidth >= 768) setOpen(false)
-    }
+    const onResize = () => { if (window.innerWidth >= 768) setOpen(false) }
     window.addEventListener("resize", onResize)
     return () => window.removeEventListener("resize", onResize)
   }, [])
@@ -125,7 +90,7 @@ export default function Navbar() {
           <button
             className="md:hidden rounded-xl border p-2 hover:bg-black/5 transition-colors"
             style={{ borderColor: "var(--border)" }}
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => setOpen(v => !v)}
             aria-label="Toggle menu"
           >
             <span className="block h-0.5 w-5 bg-current mb-1" />
@@ -143,6 +108,8 @@ export default function Navbar() {
               src="/image/logo.png"
               alt="logo"
               className="h-14 md:h-16 object-contain mb-0.5"
+              width={64} height={64}
+              decoding="async" fetchPriority="high"
             />
             <span className="font-display text-lg sm:text-xl md:text-2xl font-bold tracking-tight">
               The Joe Lewis Project
@@ -151,7 +118,7 @@ export default function Navbar() {
 
           {/* Socials (desktop) */}
           <div className="hidden md:flex items-center justify-end gap-3">
-            {socials.map((s) => (
+            {socials.map(s => (
               <a
                 key={s.name}
                 href={s.href}
@@ -165,7 +132,8 @@ export default function Navbar() {
                   src={s.icon}
                   alt={s.name}
                   className="h-5 w-5 object-contain hover:opacity-80 transition"
-                  loading="lazy"
+                  width={20} height={20}
+                  loading="lazy" decoding="async"
                 />
                 <span className="sr-only">{s.name}</span>
               </a>
@@ -193,7 +161,7 @@ export default function Navbar() {
             <div className="px-4 py-3 space-y-3">
               {/* Socials (mobile) */}
               <div className="flex items-center gap-4">
-                {socials.map((s) => (
+                {socials.map(s => (
                   <a
                     key={`m-${s.name}`}
                     href={s.href}
@@ -207,7 +175,8 @@ export default function Navbar() {
                       src={s.icon}
                       alt={s.name}
                       className="h-5 w-5 object-contain hover:opacity-80 transition"
-                      loading="lazy"
+                      width={20} height={20}
+                      loading="lazy" decoding="async"
                     />
                     <span className="sr-only">{s.name}</span>
                   </a>
@@ -216,7 +185,7 @@ export default function Navbar() {
 
               {/* Links */}
               <div className="grid gap-1">
-                {links.map((l) => (
+                {links.map(l => (
                   <button
                     key={l.href}
                     onClick={() => handleNav(l.href)}

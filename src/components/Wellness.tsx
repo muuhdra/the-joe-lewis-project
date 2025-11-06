@@ -23,7 +23,7 @@ export default function Wellness() {
             <div className="text-muted">
               <h3 className="text-2xl md:text-[26px] font-semibold italic leading-snug"
                   style={{ color: "var(--text)" }}>
-                “Wellness / Fit &amp; Well — Redefining the Modern Wellness Gym”
+                “Wellness / Fit &amp; Well - Redefining the Modern Wellness Gym”
               </h3>
 
               <p className="mt-4 leading-relaxed">
@@ -77,8 +77,8 @@ export default function Wellness() {
               <img
                 src="/image/wellness.png"
                 alt="Strength and longevity training session"
-                loading="lazy"
-                decoding="async"
+                width={1280} height={720}
+                loading="lazy" decoding="async"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
               />
               {/* Overlay subtil + badge */}

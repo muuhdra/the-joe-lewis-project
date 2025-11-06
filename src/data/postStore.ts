@@ -1,4 +1,4 @@
-// src/data/postStore.ts
+
 import { supabase } from "../lib/supabase"
 
 export type Section = "blog" | "travel"
@@ -14,15 +14,15 @@ export type Post = {
   image?: string
   video_url?: string
   is_draft: boolean
-  date: string            // ISO
+  date: string
   category: Category
-  reading_time?: string   // <-- nom colonne DB
+  reading_time?: string
   author?: string
 }
 
 export type DraftPost = Omit<Post, "is_draft" | "date" | "section"> & {
-  isDraft?: boolean       // champ UI
-  date?: string           // champ UI
+  isDraft?: boolean
+  date?: string
   section?: Section
 }
 

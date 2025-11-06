@@ -1,4 +1,4 @@
-// src/pages/AdminLogin.tsx
+
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { supabase } from "../lib/supabase"
@@ -8,7 +8,7 @@ export default function AdminLogin() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  // ✅ Efface toute session précédente à chaque ouverture de la page
+ 
   useEffect(() => {
     sessionStorage.removeItem("admin_ok")
   }, [])

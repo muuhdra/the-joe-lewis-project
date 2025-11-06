@@ -1,9 +1,9 @@
-// src/pages/TravelPostPage.tsx
+
 import { useParams, Link } from "react-router-dom"
 import Reveal from "../components/Reveal"
 import { useEffect, useState } from "react"
 import { getTravelPostBySlug, type Post } from "../data/postStore"
-import SafeHtml from "../components/SafeHtml" // rendu HTML sécurisé
+import SafeHtml from "../components/SafeHtml"
 
 export default function TravelPostPage() {
   const { slug } = useParams<{ slug: string }>()

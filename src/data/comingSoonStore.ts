@@ -1,4 +1,4 @@
-// src/data/comingSoonStore.ts
+
 const KEY = "jlp_coming_v1"
 
 export type ComingItem = {
@@ -6,7 +6,7 @@ export type ComingItem = {
   title: string
   desc: string
   eta?: string
-  progress?: number // 0-100
+  progress?: number
   active?: boolean
 }
 

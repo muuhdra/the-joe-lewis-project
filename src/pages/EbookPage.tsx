@@ -1,8 +1,5 @@
-// src/pages/EbookPage.tsx
 import { Link } from "react-router-dom"
-import cover from "/image/LeSamurai.png"
 
-// 🔧 Remplace si besoin
 const SUBSTACK_URL = "https://joelewis274.substack.com"
 const RELEASE_LABEL = "Coming January 2026"
 const PDF_URL = "/downloads/samurai-ch1.pdf" // dépose le PDF dans /public/downloads/
@@ -36,7 +33,7 @@ export default function EbookPage() {
               href={PDF_URL}
               target="_blank"
               rel="noreferrer"
-              className="btn btn-outline"
+              className="btn btn-ghost"
             >
               Download Free PDF
             </a>
@@ -63,7 +60,7 @@ export default function EbookPage() {
 
         <div className="order-first md:order-last relative">
           <img
-            src={cover}
+            src="/image/LeSamurai.png"
             alt="eBook cover"
             className="w-full rounded-2xl shadow-lg object-cover"
           />
@@ -93,9 +90,9 @@ export default function EbookPage() {
           className="rounded-2xl border p-6 bg-[var(--surface)]"
           style={{ borderColor: "var(--border)" }}
         >
-          <h2 className="text-xl font-semibold">Free Preview (2 chapters)</h2>
+          <h2 className="text-xl font-semibold">Free Preview (1 chapter)</h2>
           <p className="mt-2 text-sm text-muted">
-            Enjoy two chapters while the full eBook is being finalized.
+            Enjoy one chapter while the full eBook is being finalized.
           </p>
 
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -108,22 +105,13 @@ export default function EbookPage() {
               <div className="text-muted text-sm">The Way of Less</div>
             </Link>
 
-            <Link
-              to="/ebook/preview#ch2"
-              className="rounded-xl border p-4 hover:bg-white/5 transition"
-              style={{ borderColor: "var(--border)" }}
-            >
-              <div className="text-sm font-semibold">Chapter 2</div>
-              <div className="text-muted text-sm">Stillness in Motion</div>
-            </Link>
-
             {/* Free PDF card — Beehiiv unlock retiré, on garde le download direct */}
             <div
               className="rounded-xl border p-4 hover:bg-white/5 transition text-left"
               style={{ borderColor: "var(--border)" }}
             >
               <div className="text-sm font-semibold">Free PDF</div>
-              <div className="text-muted text-sm">Chapter 1 (Manila Edition)</div>
+              <div className="text-muted text-sm">Chapter 1 (The Way of Lightness)</div>
               <div className="mt-3 flex flex-wrap gap-2">
                 <a
                   href={PDF_URL}
@@ -165,7 +153,7 @@ export default function EbookPage() {
             href={PDF_URL}
             target="_blank"
             rel="noreferrer"
-            className="btn btn-outline"
+            className="btn btn-ghost"
           >
             Download Free PDF
           </a>

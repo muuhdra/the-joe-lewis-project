@@ -1,14 +1,9 @@
-// src/components/MediaGallery.tsx
-import { Media } from "../data/posts" // doit exporter le type Media (voir note plus bas)
+
+import { Media } from "../data/posts"
 
 type Props = { media?: Media[] }
 
-/**
- * Galerie qui n'affiche QUE des images.
- * - Ignore les médias non "image" (ex: video)
- * - lazy-loading + decoding async
- * - figure + figcaption optionnelle
- */
+
 export default function MediaGallery({ media }: Props) {
   if (!media || media.length === 0) return null
 

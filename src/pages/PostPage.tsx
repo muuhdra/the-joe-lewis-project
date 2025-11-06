@@ -1,4 +1,4 @@
-// src/pages/PostPage.tsx  (ou BlogPage.tsx)
+
 import { useEffect, useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import { getBlogPosts, type Post } from "../data/postStore"

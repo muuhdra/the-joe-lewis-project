@@ -23,7 +23,7 @@ export default function ComingSoon() {
       return <Sparkles className="h-5 w-5" aria-hidden="true" />
     }
     return items
-      .filter(it => !(it.id || "").toLowerCase().includes("news")) // ← hide newsletter card
+      .filter(it => !(it.id || "").toLowerCase().includes("news"))
       .map(it => ({
         ...it,
         icon: pickIcon(it.id),

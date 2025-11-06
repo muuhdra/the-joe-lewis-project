@@ -1,13 +1,12 @@
-// src/components/SafeHtml.tsx
+
 import React, { useMemo } from "react"
 
-// ❗ Si tu as DOMPurify dans le projet, importe-le ici.
-// Sinon on fait une petite sanitisation minimale (en retirant <script>).
+
 function basicSanitize(html: string) {
   return html.replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "")
 }
 
-/** Très petit parseur Markdown → HTML (H1/H2/H3, gras, italique, listes, liens, images) */
+
 function mdToHtml(md: string) {
   const esc = (s: string) =>
     s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
@@ -97,13 +96,3 @@ export default function SafeHtml({ html }: Props) {
   )
 }
 
-/* Styles recommandés (ex: dans src/index.css)
-.content-html h1 { font-size: 2rem; font-weight: 800; margin-top:1.2em }
-.content-html h2 { font-size: 1.5rem; font-weight: 700; margin-top:1.1em }
-.content-html h3 { font-size: 1.25rem; font-weight: 700; margin-top:1em }
-.content-html p  { line-height: 1.8; margin: .9em 0 }
-.content-html ul { list-style: disc; margin: .6em 1.5em }
-.content-html img { display:block; width:100%; height:auto; border-radius:12px; background:var(--surface); }
-.content-html .yt-wrap{ position:relative; padding-top:56.25%; border-radius:12px; overflow:hidden; background:#000; margin:1rem 0 }
-.content-html .yt-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
-*/

@@ -1,15 +1,12 @@
 import Reveal from "./Reveal"
-
 import React from "react";
-import heroBg from "/image/background_image.jpg"; // ton background
-import square from "/image/square.png"; // ton illustration
 
 export default function Hero() {
   return (
     <section
       id="home"
       className="relative h-screen flex items-center justify-center text-center bg-cover bg-center"
-      style={{ backgroundImage: `url(${heroBg})` }}
+      style={{ backgroundImage: "url('/image/background_image.jpg')" }}
     >
       {/* Overlay sombre et léger */}
       <div className="absolute inset-0 bg-black/30"></div>
@@ -23,7 +20,7 @@ export default function Hero() {
         {/* Petite illustration sous le titre */}
         <div className="flex justify-center mb-6">
           <img
-            src={square}
+            src="/image/square.png" // ✅ chemin direct
             alt="Decoration"
             className="h-56 md:h-56 object-contain opacity-95 drop-shadow-xl"
           />

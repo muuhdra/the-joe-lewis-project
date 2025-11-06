@@ -25,12 +25,12 @@ export default function About() {
                 </h2>
 
                 <p className="mt-4 text-muted">
-                  Joe Lewis — Writer. Explorer. Wellness Warrior. U.S. Marine Corps Force Recon Warrior.
+                  Joe Lewis - Writer. Explorer. Wellness Warrior. U.S. Marine Corps Force Recon Warrior.
                 </p>
 
                 <p className="mt-4 text-muted">
                   A Hawaii surfer boy, with salt water in my veins and a love for freedom in my heart.
-                  At eight years old, I survived the devastating 1957 Ruskin Heights, Missouri tornado —
+                  At eight years old, I survived the devastating 1957 Ruskin Heights, Missouri tornado
                   an early reminder of both the fragility of life and the resilience within us.
                 </p>
 
@@ -54,8 +54,6 @@ export default function About() {
 
             {/* Colonne image */}
             <Reveal delay={0.08}>
-              {/* ↓ On retire le surplus d’espace en supprimant le wrapper centré
-                     et en limitant la largeur de l’image plutôt que d’imposer un grand conteneur */}
               <div className="flex lg:justify-end">
                 <img
                   src="/image/joe.png"
