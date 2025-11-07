@@ -89,7 +89,7 @@ export default function ContactForm({ compact, emphasize }: Props) {
         </button>
 
         <a
-          className="btn"
+          className="btn btn-ghost"
           href={`mailto:joe@thejoelewisproject.com?subject=${encodeURIComponent("From – The Joe Lewis Project")}&body=${encodeURIComponent(message ? message : "")}`}
         >
           Use email app

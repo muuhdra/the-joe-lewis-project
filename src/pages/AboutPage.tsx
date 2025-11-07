@@ -34,11 +34,11 @@ export default function AboutPage() {
       </div>
 
       {/* Timeline / philosophie */}
-      <section className="mt-16">
+      <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-24 reading-prose">
         <h2 className="font-display text-2xl font-bold mb-6">About Joe Lewis</h2>
 
         <div className="space-y-6 text-lg text-muted leading-relaxed">
-          <p>
+          <p className="dropcap">
             A Hawaii surfer boy, with salt water in my veins and a love for freedom in my heart.
             At eight years old, I survived the devastating 1957 Ruskin Heights, Missouri tornado
             an early reminder of both the fragility of life and the resilience within us.
@@ -84,7 +84,12 @@ export default function AboutPage() {
             <span className="font-semibold"> Discipline. Purpose. Lightness.</span>
           </p>
         </div>
-      </section>
+      </article>
+      <div className="mt-2 text-center">
+            <a href="/chat" className="btn btn-primary">
+              Contact Joe
+            </a>
+          </div>
     </main>
   )
 }

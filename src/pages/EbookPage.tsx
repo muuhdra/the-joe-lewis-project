@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
 
 const SUBSTACK_URL = "https://joelewis274.substack.com"
+const BEEHIIV_URL = "https://thejoelewisproject.beehiiv.com"
 const RELEASE_LABEL = "Coming January 2026"
-const PDF_URL = "/downloads/samurai-ch1.pdf" // dépose le PDF dans /public/downloads/
+const PDF_URL = "/downloads/samurai-ch1.pdf"
 
 export default function EbookPage() {
   return (
@@ -19,9 +20,12 @@ export default function EbookPage() {
           </h1>
           <p className="mt-2 text-lg italic text-muted">By Joe Lewis</p>
           <p className="mt-6 text-base leading-relaxed text-muted">
-            A journey into modern Bushido, stillness, and the way of walking free.
-            This book blends timeless principles with practical frameworks for living
-            lighter — in body, mind, and schedule.
+            A quiet reflection on what it means to live freely in a heavy world.
+            It follows the path of a modern day wanderer someone who chooses clarity over chaos,
+            peace over noise, and purpose over pressure. Each chapter reveals a small truth about
+            balance, courage, and simplicity lessons borrowed from the spirit of the samurai,
+            but lived in today’s world. It’s not about fighting battles, but about learning how to carry less fear,
+            less clutter, less doubt so you can finally move through life with lightness and strength.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3 items-center">
@@ -55,6 +59,15 @@ export default function EbookPage() {
             >
               Get notified on Substack
             </a>
+
+            <a
+              href={BEEHIIV_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-ghost"
+            >
+              Get notified on Beehiiv
+            </a>
           </div>
         </div>
 
@@ -70,7 +83,7 @@ export default function EbookPage() {
         </div>
       </header>
 
-      {/* SOMMAIRE + PREVIEW LINKS */}
+      {/* TABLE OF CONTENTS + PREVIEW */}
       <section className="mt-16 grid md:grid-cols-2 gap-8">
         <div
           className="rounded-2xl border p-6 bg-[var(--surface)]"
@@ -78,11 +91,15 @@ export default function EbookPage() {
         >
           <h2 className="text-xl font-semibold">Table of Contents</h2>
           <ul className="mt-4 list-disc list-inside space-y-2 text-muted">
-            <li>Part I — The Way of Simplicity</li>
-            <li>Part II — Traveling Light in Body &amp; Mind</li>
-            <li>Part III — Stillness in Movement</li>
-            <li>Part IV — A Modern Bushido</li>
-            <li>Appendix — Minimal kits, rituals, and prompts</li>
+            <li>Chap 1 — The Way of Lightness</li>
+            <li>Chap 2 — The Discipline of Stillness</li>
+            <li>Chap 3 — The Craft of Fearlessness</li>
+            <li>Chap 4 — The Strength of Simplicity</li>
+            <li>Chap 5 — The Warrior and the Monk</li>
+            <li>Chap 6 — The Seven Principles</li>
+            <li>Chap 7 — Living with Purpose</li>
+            <li>Chap 8 — The Modern Ronin</li>
+            <li>Chap 9 — The Return &amp; Epilogue</li>
           </ul>
         </div>
 
@@ -102,10 +119,9 @@ export default function EbookPage() {
               style={{ borderColor: "var(--border)" }}
             >
               <div className="text-sm font-semibold">Chapter 1</div>
-              <div className="text-muted text-sm">The Way of Less</div>
+              <div className="text-muted text-sm">The Way of Lightness</div>
             </Link>
 
-            {/* Free PDF card — Beehiiv unlock retiré, on garde le download direct */}
             <div
               className="rounded-xl border p-4 hover:bg-white/5 transition text-left"
               style={{ borderColor: "var(--border)" }}
@@ -139,7 +155,7 @@ export default function EbookPage() {
           style={{ borderColor: "var(--border)" }}
         >
           <p className="text-muted leading-relaxed">
-            “To travel light is to choose what carries you forward. Tools become fewer, 
+            “To travel light is to choose what carries you forward. Tools become fewer,
             but each has a greater purpose. You don’t chase more; you refine what matters.”
           </p>
         </div>
@@ -174,6 +190,15 @@ export default function EbookPage() {
             className="btn btn-ghost"
           >
             Get notified on Substack
+          </a>
+
+          <a
+            href={BEEHIIV_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-ghost"
+          >
+            Get notified on Beehiiv
           </a>
         </div>
       </section>

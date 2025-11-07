@@ -2,6 +2,7 @@ import Reveal from "./Reveal"
 import { Link } from "react-router-dom"
 
 const SUBSTACK_URL = "https://joelewis274.substack.com"
+const BEEHIIV_URL  = "https://thejoelewisproject.beehiiv.com"
 const RELEASE_LABEL = "Coming January 2026"
 const PDF_URL = "/downloads/samurai-ch1.pdf"
 
@@ -39,11 +40,12 @@ export default function Ebook() {
               </h3>
               <p className="mt-1 italic">By Joe Lewis</p>
               <p className="mt-4 max-w-xl">
-                Discover the Japanese concept of ikigai and learn how to find your true purpose
-                in life. This guide blends ancient wisdom with modern psychology.
+                “The world keeps asking you to carry more, more plans, more noise, more weight.
+                But the Samurai’s strength was never in how much he held, but in how much he could release.
+                To travel light is to remember that freedom begins not on the road, but in the mind.”
               </p>
 
-              {/* Actions (Beehiiv unlock supprimé) */}
+              {/* Actions */}
               <div className="mt-6 flex flex-wrap gap-3 items-center">
                 <Link to="/ebook/preview" className="btn btn-ghost">
                   Read Free Preview
@@ -65,6 +67,22 @@ export default function Ebook() {
                   className="btn btn-ghost"
                 >
                   Get notified on Substack
+                </a>
+
+                {/* Nouveau bouton Beehiiv (jaune) */}
+                <a
+                  href={BEEHIIV_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full px-4 py-2 text-sm font-semibold shadow
+                             border hover:opacity-90 transition"
+                  style={{
+                    background: "#f7d31b",
+                    color: "#111",
+                    borderColor: "rgba(0,0,0,.1)"
+                  }}
+                >
+                  Get notified on Beehiiv
                 </a>
               </div>
             </div>

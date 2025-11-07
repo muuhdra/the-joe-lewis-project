@@ -1,15 +1,13 @@
-
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
-
 const SUBSTACK_URL = "https://joelewis274.substack.com"
+const BEEHIIV_URL = "https://thejoelewisproject.beehiiv.com"
 const RELEASE_LABEL = "Coming January 2026"
 const PDF_URL = "/downloads/samurai-ch1.pdf"
 
 export default function EbookPreviewPage() {
   const [progress, setProgress] = useState(0)
-
 
   useEffect(() => {
     const onScroll = () => {
@@ -51,13 +49,18 @@ export default function EbookPreviewPage() {
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            {/* Bouton Beehiiv retiré */}
             <a href={PDF_URL} className="btn btn-ghost" target="_blank" rel="noreferrer">
               Download Free PDF
             </a>
+
             <a href={SUBSTACK_URL} target="_blank" rel="noreferrer" className="btn btn-ghost">
               Get notified on Substack
             </a>
+
+            <a href={BEEHIIV_URL} target="_blank" rel="noreferrer" className="btn btn-ghost">
+              Get notified on Beehiiv
+            </a>
+
             <Link to="/ebook" className="btn btn-primary">
               Go to eBook page
             </Link>
@@ -67,9 +70,9 @@ export default function EbookPreviewPage() {
 
       {/* Corps de lecture */}
       <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-24 reading-prose">
-        {/* CHAPTER 1 — Manila Opening */}
-        <h2 id="ch1">Chapter 1 — The Way of Lightness</h2>
-          <span className="italic">“To move freely, one must first release what no longer serves the journey."</span>
+        <h2 id="ch1">Chapter 1 - The Way of Lightness</h2>
+        <span className="italic">“To move freely, one must first release what no longer serves the journey."</span>
+
         <p className="dropcap">
           The plane touched down in Manila just after sunset. Heat and humidity wrapped around
           me like an old memory dense, familiar, alive. As the cabin doors opened, that unmistakable
@@ -101,7 +104,7 @@ export default function EbookPreviewPage() {
         </p>
         <p>
           In the quiet moments between destinations, I often think of the Samurai’s ritual of preparation.
-          Every possession had meaning; every movement intention. To live this way requires courage the courage to let go.
+          Every possession had meaning; every movement, intention. To live this way requires courage the courage to let go.
         </p>
 
         <blockquote>
@@ -134,18 +137,23 @@ export default function EbookPreviewPage() {
           notified when the full eBook launches in January 2026.
         </p>
 
-
         <div className="mt-10 flex flex-wrap gap-3">
-
           <a href={PDF_URL} className="btn btn-ghost" target="_blank" rel="noreferrer">
             Download Free PDF
           </a>
+
           <a href={SUBSTACK_URL} target="_blank" rel="noreferrer" className="btn btn-ghost">
             Get notified on Substack
           </a>
+
+          <a href={BEEHIIV_URL} target="_blank" rel="noreferrer" className="btn btn-ghost">
+            Get notified on Beehiiv
+          </a>
+
           <Link to="/ebook" className="btn btn-primary">
             Go to eBook page
           </Link>
+
           <Link to="/" className="btn btn-primary">
             Back to Home
           </Link>

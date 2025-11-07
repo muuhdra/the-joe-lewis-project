@@ -1,7 +1,13 @@
+// src/components/Blog.tsx
 import Reveal from "./Reveal"
 import { Link } from "react-router-dom"
 import { useEffect, useMemo, useState } from "react"
 import { getBlogPosts, type Post } from "../data/postStore"
+
+function isFuture(iso?: string) {
+  if (!iso) return false
+  return new Date(iso) > new Date()
+}
 
 export default function Blog() {
   const [items, setItems] = useState<Post[] | null>(null)
@@ -21,9 +27,18 @@ export default function Blog() {
     return () => { alive = false }
   }, [])
 
+  // Keep the 3 latest *valid* posts
   const latest = useMemo(() => {
     if (!items) return []
-    return [...items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 3)
+    return items
+      .filter(p => {
+        const hasSlug = !!p.slug
+        const isDraft = !!(p as any).is_draft
+        const scheduled = isFuture(p.date)
+        return hasSlug && !isDraft && !scheduled
+      })
+      .sort((a, b) => (a.date < b.date ? 1 : -1))
+      .slice(0, 3)
   }, [items])
 
   return (
@@ -50,33 +65,53 @@ export default function Blog() {
 
         {/* Grille (3 derniers) */}
         <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {latest.map((post, i) => (
-            <Reveal key={post.slug} delay={i * 0.08}>
-              <Link
-                to={`/blog/${post.slug}`}
-                className="group block overflow-hidden rounded-2xl shadow-lg transition-transform duration-300 hover:scale-[1.02]"
-                style={{ background: "var(--bg-alt)" }}
-                aria-label={`Read article: ${post.title}`}
-              >
+          {latest.map((post, i) => {
+            const hasSlug = !!post.slug
+            const to = hasSlug ? `/blog/${encodeURIComponent(post.slug)}` : ""
+            const cardInner = (
+              <>
                 <img
-                  src={post.image}
+                  src={post.image || "/image/placeholder.jpg"}
                   alt={post.title}
                   className="h-48 w-full object-cover sm:h-52"
                   loading="lazy"
                   decoding="async"
                 />
-
                 <div className="p-4">
                   <h3 className="text-lg font-semibold">{post.title}</h3>
                   <p className="mt-2 text-sm text-muted">{post.excerpt}</p>
-
-                  <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-[var(--ink)]">
-                    Read article <span className="transition-transform group-hover:translate-x-0.5">→</span>
-                  </div>
+                  {hasSlug ? (
+                    <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-[var(--ink)]">
+                      Read article <span className="transition-transform group-hover:translate-x-0.5">→</span>
+                    </div>
+                  ) : (
+                    <div className="mt-4 inline-flex items-center gap-2 text-sm text-muted">
+                      Unavailable
+                    </div>
+                  )}
                 </div>
-              </Link>
-            </Reveal>
-          ))}
+              </>
+            )
+
+            return (
+              <Reveal key={post.slug || post.title} delay={i * 0.08}>
+                <div
+                  className="group overflow-hidden rounded-2xl shadow-lg transition-transform duration-300 hover:scale-[1.02]"
+                  style={{ background: "var(--bg-alt)" }}
+                >
+                  {hasSlug ? (
+                    <Link to={to} className="block" aria-label={`Read article: ${post.title}`}>
+                      {cardInner}
+                    </Link>
+                  ) : (
+                    <div className="opacity-80 cursor-not-allowed" title="Missing slug">
+                      {cardInner}
+                    </div>
+                  )}
+                </div>
+              </Reveal>
+            )
+          })}
         </div>
       </div>
     </section>

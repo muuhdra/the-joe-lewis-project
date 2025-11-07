@@ -15,16 +15,16 @@ export default function NewsletterInline() {
           Choose your favorite platform — Substack or Beehiiv — to follow Joe’s latest insights & updates.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* SUBSTACK */}
-          <div className="relative bg-white/10 rounded-xl p-4 shadow-lg backdrop-blur hover:shadow-[0_0_25px_rgba(255,255,255,0.1)] transform hover:-translate-y-1 transition-all duration-300 border border-white/10">
-            <div className="absolute -top-4 left-6 bg-[#ff6719] text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+          <div className="relative bg-white/10 rounded-lg p-2 shadow-md backdrop-blur border border-white/10 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transform hover:-translate-y-0.5 transition-all duration-300">
+            <div className="absolute -top-3 left-5 bg-[#ff6719] text-white text-[10px] font-bold px-3 py-0.5 rounded-full shadow">
               SUBSTACK
             </div>
 
-            <div className="text-left mb-3">
-              <h3 className="font-semibold text-lg">Essays & Personal Letters</h3>
-              <p className="text-white/70 text-sm">
+            <div className="text-left mb-2">
+              <h3 className="font-semibold text-base">Essays & Personal Letters</h3>
+              <p className="text-white/70 text-xs">
                 Read reflections, ideas & long-form stories from Joe.
               </p>
             </div>
@@ -36,24 +36,24 @@ export default function NewsletterInline() {
               style={{
                 border: "1px solid #ccc",
                 background: "white",
-                borderRadius: "14px",
+                borderRadius: "10px",
               }}
               frameBorder="0"
               scrolling="no"
               title="Substack subscribe"
             />
-            <p className="text-xs text-white/60 mt-3">Powered by Substack</p>
+            <p className="text-[10px] text-white/60 mt-2">Powered by Substack</p>
           </div>
 
           {/* BEEHIIV */}
-          <div className="relative bg-white/10 rounded-xl p-4 shadow-lg backdrop-blur hover:shadow-[0_0_25px_rgba(255,255,255,0.1)] transform hover:-translate-y-1 transition-all duration-300 border border-white/10">
-            <div className="absolute -top-4 left-6 bg-[#f7d31b] text-black text-xs font-bold px-3 py-1 rounded-full shadow">
+          <div className="relative bg-white/10 rounded-lg p-2 shadow-md backdrop-blur border border-white/10 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transform hover:-translate-y-0.5 transition-all duration-300">
+            <div className="absolute -top-3 left-5 bg-[#f7d31b] text-black text-[10px] font-bold px-3 py-0.5 rounded-full shadow">
               BEEHIIV
             </div>
 
-            <div className="text-left mb-3">
-              <h3 className="font-semibold text-lg">News & Launch Updates</h3>
-              <p className="text-white/70 text-sm">
+            <div className="text-left mb-2">
+              <h3 className="font-semibold text-base">News & Launch Updates</h3>
+              <p className="text-white/70 text-xs">
                 Get early access to launches, eBooks, and special promos.
               </p>
             </div>
@@ -61,11 +61,11 @@ export default function NewsletterInline() {
             <iframe
               src={BEEHIIV_EMBED}
               width="100%"
-              height="314"
+              height="160"
               style={{
                 border: "1px solid #ccc",
                 background: "white",
-                borderRadius: "14px",
+                borderRadius: "10px",
                 boxShadow: "0 0 0 #0000",
                 margin: "0",
               }}
@@ -75,7 +75,7 @@ export default function NewsletterInline() {
               className="beehiiv-embed"
               data-test-id="beehiiv-embed"
             />
-            <p className="text-xs text-white/60 mt-3">Powered by Beehiiv</p>
+            <p className="text-[10px] text-white/60 mt-2">Powered by Beehiiv</p>
           </div>
         </div>
       </div>
