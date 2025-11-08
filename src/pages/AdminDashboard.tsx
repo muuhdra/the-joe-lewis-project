@@ -395,7 +395,7 @@ export default function AdminDashboard() {
                   <tr className="[&>th]:text-left [&>th]:px-3 [&>th]:py-2 border-b"
                       style={{ borderColor: "var(--border)" }}>
                     <th className="w-[32%]">Title</th>
-                    <th className="w-[20%]">Slug</th>
+                    <th className="w-[20%]">Main Idea</th>
                     <th className="w-[14%]">Status</th>
                     <th className="w-[18%]">Date</th>
                     <th className="w-[16%]" />
@@ -578,7 +578,7 @@ export default function AdminDashboard() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm text-muted" htmlFor="post-slug">Slug *</label>
+                  <label className="text-sm text-muted" htmlFor="post-slug">Main Idea *</label>
                   <input
                     id="post-slug"
                     className="w-full rounded-xl border px-3 py-2"
@@ -675,7 +675,7 @@ export default function AdminDashboard() {
                   <input
                     id="post-publish-at"
                     type="datetime-local"
-                    className="w-full rounded-xl border px-3 py-2"
+                    className="w-full rounded-xl border px-3 py-2" 
                     style={{ borderColor: "var(--border)" }}
                     value={postForm.date ? new Date(postForm.date).toISOString().slice(0,16) : ""}
                     onChange={e => onPostChange("date", e.target.value ? new Date(e.target.value).toISOString() : "")}
@@ -731,8 +731,8 @@ export default function AdminDashboard() {
               <div className="flex flex-wrap gap-3">
                 <button className="btn btn-ghost" type="button" onClick={saveAsDraft}>Save as draft</button>
                 <button className="btn btn-primary" type="button" onClick={publishNow}>Publish now</button>
-                <button className="btn" type="button" onClick={schedulePost}>Schedule</button>
-                <button className="btn btn-secondary" type="button" onClick={updatePost} disabled={!postForm.slug}>
+                <button className="btn btn-primary" type="button" onClick={schedulePost}>Schedule</button>
+                <button className="btn btn-ghost" type="button" onClick={updatePost} disabled={!postForm.slug}>
                   Update post
                 </button>
                 <button type="button" className="btn btn-ghost" onClick={() => setPostForm({ ...emptyPost })}>

@@ -17,7 +17,7 @@ export default function AboutPage() {
             Hightlights & Philosophy
           </h1>
           <ul className="space-y-3 text-muted">
-            <li>✦ Has traveled to more than 20+ countries</li>
+            <li>✦ Has traveled to more than 40 countries</li>
             <li>✦ Passionate about Ikigai and Bushido</li>
             <li>✦ Wellness and minimalist travel coach</li>
           </ul>

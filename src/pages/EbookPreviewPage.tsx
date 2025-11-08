@@ -4,7 +4,9 @@ import { Link } from "react-router-dom"
 const SUBSTACK_URL = "https://joelewis274.substack.com"
 const BEEHIIV_URL = "https://thejoelewisproject.beehiiv.com"
 const RELEASE_LABEL = "Coming January 2026"
-const PDF_URL = "/downloads/samurai-ch1.pdf"
+
+// 🔒 Nouveau : chemin de déblocage
+const UNLOCK_PATH = "/ebook/unlock"
 
 export default function EbookPreviewPage() {
   const [progress, setProgress] = useState(0)
@@ -49,9 +51,10 @@ export default function EbookPreviewPage() {
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href={PDF_URL} className="btn btn-ghost" target="_blank" rel="noreferrer">
+            {/* 🔒 Pas de lien direct vers le PDF */}
+            <Link to={UNLOCK_PATH} className="btn btn-ghost">
               Download Free PDF
-            </a>
+            </Link>
 
             <a href={SUBSTACK_URL} target="_blank" rel="noreferrer" className="btn btn-ghost">
               Get notified on Substack
@@ -79,32 +82,33 @@ export default function EbookPreviewPage() {
           scent of the tropics a mix of ocean air, diesel exhaust, and street food came rushing in.
           It was both chaos and comfort, a reminder that the world outside still pulsed with raw, unfiltered life.
         </p>
+
         <p>
           I hadn’t returned in years. The airport had changed; I had changed even more.
           The terminal lights flickered through glass that reflected not just the city, but decades
           of motion arrivals, departures, reinventions. My single carry-on bag rolled quietly beside me.
           Traveling light wasn’t just a habit anymore; it was a declaration.
         </p>
+
         <p>
           Outside, Manila hummed with rhythm jeepneys roaring, vendors calling, the scent of rain
           still clinging to the pavement. I watched people hurry past, each carrying their world on their shoulders
           some literal, some invisible. I used to be like that, mistaking motion for progress, weight for worth.
         </p>
+
         <p>
           But years of movement had taught me a truth the modern world often forgets: the lighter you travel, the more you see.
         </p>
+
         <p>
           The Samurai understood this centuries ago. They carried what they needed and no more. Their discipline wasn’t rooted
-          in deprivation but in awareness a recognition that too much of anything possessions, pride, even certainty slows the
-          blade and clouds the spirit.
+          in deprivation but in awareness a recognition that too much of anything possessions, pride, even certainty
+          slows the blade and clouds the spirit.
         </p>
+
         <p>
           Walking through the humid Manila night, I felt the same lesson stirring within me. Lightness
-          was not about what I left behind, but what I carried forward focus, integrity, purpose.
-        </p>
-        <p>
-          In the quiet moments between destinations, I often think of the Samurai’s ritual of preparation.
-          Every possession had meaning; every movement, intention. To live this way requires courage the courage to let go.
+          was not about what I left behind, but what I carried forward: focus, integrity, purpose.
         </p>
 
         <blockquote>
@@ -115,32 +119,37 @@ export default function EbookPreviewPage() {
         <p>
           When you travel light, you see more clearly. You notice the pattern of raindrops on a taxi window,
           the laughter of children playing barefoot in an alley, the way the city never really sleeps.
-          You also begin to notice the clutter within the grudges, the fears, the stories that no longer fit.
+          You also begin to notice the clutter within: the grudges, the fears, the stories that no longer fit.
         </p>
+
         <p>
           I have come to believe that mastery, like travel, is an act of editing. The sword becomes sharper
           by what is removed, not by what is added. So too the spirit.
         </p>
+
         <p>
           To live lightly is to live deliberately to move through the world with fewer things and fuller awareness.
           The first step is not to buy a ticket or pack a bag, but to ask a single question:
           <span className="italic">“What am I willing to release so that I can move forward with grace?”</span>
         </p>
+
         <p>
           The Manila air was thick, the night alive. I smiled, adjusted the strap on my single bag,
           and stepped into the flow of traffic and humanity lighter, freer, ready for whatever came next.
         </p>
+
         <p>The lighter the pack, the longer the journey. The quieter the mind, the deeper the wisdom.</p>
 
         <p className="leadout">
-          Want the formatted version? Get the A5 PDF of Chapter 1 (The Way of Lightness), or subscribe to be
-          notified when the full eBook launches in January 2026.
+          Want the formatted version? Subscribe on Substack or Beehiiv to unlock the A5 PDF of Chapter 1 (The Way of Lightness),
+          and get notified when the full eBook launches in January 2026.
         </p>
 
         <div className="mt-10 flex flex-wrap gap-3">
-          <a href={PDF_URL} className="btn btn-ghost" target="_blank" rel="noreferrer">
+          {/* 🔒 Pas de lien direct vers le PDF */}
+          <Link to={UNLOCK_PATH} className="btn btn-ghost">
             Download Free PDF
-          </a>
+          </Link>
 
           <a href={SUBSTACK_URL} target="_blank" rel="noreferrer" className="btn btn-ghost">
             Get notified on Substack

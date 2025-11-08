@@ -64,7 +64,13 @@ export default function Ebook() {
                   href={SUBSTACK_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="btn btn-ghost"
+                  className="rounded-full px-4 py-2 text-sm font-semibold shadow
+                            border hover:opacity-90 transition"
+                  style={{
+                    background: "#ff6719",
+                    color: "#fff",
+                    borderColor: "rgba(255,255,255,.2)",
+                  }}
                 >
                   Get notified on Substack
                 </a>

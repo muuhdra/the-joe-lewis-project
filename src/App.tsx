@@ -8,7 +8,6 @@ import NotFound from "./components/NotFound"
 import ErrorBoundary from "./components/ErrorBoundary"
 import FreeChapterLanding from "./components/FreeChapterLanding"
 
-
 // === Lazy pages ===
 const Home = lazy(() => import("./pages/Home"))
 const BlogPage = lazy(() => import("./pages/BlogPage"))
@@ -21,6 +20,7 @@ const CheckoutPage = lazy(() => import("./pages/CheckoutPage"))
 const WellnessPage = lazy(() => import("./pages/WellnessPage"))
 const AboutPage = lazy(() => import("./pages/AboutPage"))
 const LetsChatPage = lazy(() => import("./pages/LetsChatPage"))
+const UnlockPage = lazy(() => import("./pages/UnlockPage"))
 
 // === Admin ===
 const AdminLogin = lazy(() => import("./pages/AdminLogin"))
@@ -32,7 +32,7 @@ function Fallback() {
 }
 
 export default function App() {
-  console.log("[App] mounted") // doit apparaître dans la console si tout monte
+  console.log("[App] mounted")
   return (
     <div className="bg-[var(--bg)] text-[var(--ink)] min-h-screen">
       <ScrollToTop />
@@ -54,6 +54,11 @@ export default function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/chat" element={<LetsChatPage />} />
             <Route path="/free-chapter" element={<FreeChapterLanding />} />
+
+            {/* Page d’unlock (route principale) */}
+            <Route path="/unlock" element={<UnlockPage />} />
+            {/* Alias utile pour compatibilité / anciens liens */}
+            <Route path="/ebook/unlock" element={<UnlockPage />} />
 
             {/* Admin */}
             <Route path="/admin" element={<AdminLogin />} />

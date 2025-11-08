@@ -3,7 +3,9 @@ import { Link } from "react-router-dom"
 const SUBSTACK_URL = "https://joelewis274.substack.com"
 const BEEHIIV_URL = "https://thejoelewisproject.beehiiv.com"
 const RELEASE_LABEL = "Coming January 2026"
-const PDF_URL = "/downloads/samurai-ch1.pdf"
+
+// 🔒 Nouveau : chemin de déblocage (au lieu d'un lien direct PDF)
+const UNLOCK_PATH = "/ebook/unlock"
 
 export default function EbookPage() {
   return (
@@ -33,14 +35,10 @@ export default function EbookPage() {
               Read Free Preview
             </Link>
 
-            <a
-              href={PDF_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="btn btn-ghost"
-            >
+            {/* 🔒 Remplacement du téléchargement direct par un déblocage via newsletter */}
+            <Link to={UNLOCK_PATH} className="btn btn-ghost">
               Download Free PDF
-            </a>
+            </Link>
 
             <button
               type="button"
@@ -92,14 +90,17 @@ export default function EbookPage() {
           <h2 className="text-xl font-semibold">Table of Contents</h2>
           <ul className="mt-4 list-disc list-inside space-y-2 text-muted">
             <li>Chap 1 — The Way of Lightness</li>
-            <li>Chap 2 — The Discipline of Stillness</li>
-            <li>Chap 3 — The Craft of Fearlessness</li>
-            <li>Chap 4 — The Strength of Simplicity</li>
-            <li>Chap 5 — The Warrior and the Monk</li>
-            <li>Chap 6 — The Seven Principles</li>
-            <li>Chap 7 — Living with Purpose</li>
-            <li>Chap 8 — The Modern Ronin</li>
-            <li>Chap 9 — The Return &amp; Epilogue</li>
+            <li>Chap 2 — The Weight We Carry</li>
+            <li>Chap 3 — The Sword of Simplicity</li>
+            <li>Chap 4 — The Compass Within </li>
+            <li>Chap 5 — The Practice of Presence</li>
+            <li>Chap 6 — The Company You Keep</li>
+            <li>Chap 7 — The Path of Service</li>
+            <li>Chap 8 — The Storm and the Stillness</li>
+            <li>Chap 9 — The Bridge Between Worlds</li>
+            <li>Chap 10 — The Season of Return</li>
+            <li>Chap 11 — The Modern Ronin</li>
+            <li>Chap 12 — The Way Forward</li>
           </ul>
         </div>
 
@@ -122,6 +123,7 @@ export default function EbookPage() {
               <div className="text-muted text-sm">The Way of Lightness</div>
             </Link>
 
+            {/* 🔒 Carte PDF : redirige vers l’unlock */}
             <div
               className="rounded-xl border p-4 hover:bg-white/5 transition text-left"
               style={{ borderColor: "var(--border)" }}
@@ -129,20 +131,15 @@ export default function EbookPage() {
               <div className="text-sm font-semibold">Free PDF</div>
               <div className="text-muted text-sm">Chapter 1 (The Way of Lightness)</div>
               <div className="mt-3 flex flex-wrap gap-2">
-                <a
-                  href={PDF_URL}
-                  className="btn btn-ghost btn-sm"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Download
-                </a>
+                <Link to={UNLOCK_PATH} className="btn btn-ghost btn-sm">
+                  Unlock via Newsletter
+                </Link>
               </div>
             </div>
           </div>
 
           <div className="mt-4 text-sm text-muted">
-            Prefer a downloadable version? Get the formatted PDF of Chapter 1 (A5 mobile-first).
+            Prefer a downloadable version? Subscribe on Substack or Beehiiv to unlock the formatted PDF of Chapter 1 (A5 mobile-first).
           </div>
         </div>
       </section>
@@ -165,14 +162,10 @@ export default function EbookPage() {
             Read the excerpt
           </Link>
 
-          <a
-            href={PDF_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-ghost"
-          >
+          {/* 🔒 Remplacement ici aussi */}
+          <Link to={UNLOCK_PATH} className="btn btn-ghost">
             Download Free PDF
-          </a>
+          </Link>
 
           <button
             type="button"
