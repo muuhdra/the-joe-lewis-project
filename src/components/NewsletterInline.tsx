@@ -1,82 +1,57 @@
 // src/components/NewsletterInline.tsx
-const SUBSTACK_EMBED = "https://joelewis274.substack.com/embed"
-const BEEHIIV_EMBED =
-  import.meta.env.VITE_BEEHIIV_EMBED ??
-  "https://subscribe-forms.beehiiv.com/37eb2d7c-aec6-41e7-89d4-23859dee059a"
-
 export default function NewsletterInline() {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const email = (e.target as HTMLFormElement).email.value
+    if (!email) return
+    window.open(
+      `https://thejoelewisproject.beehiiv.com/?email=${encodeURIComponent(email)}`,
+      "_blank"
+    )
+  }
+
   return (
     <section className="py-2 text-center" style={{ background: "#0b2d42" }}>
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-white">
+      <div className="mx-auto max-w-3xl px-4 text-white">
         <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-wide">
-          Stay Connected ✉️
+          Stay Connected to our Newsletter
         </h2>
         <p className="mt-2 text-base text-white/80">
-          Choose your favorite platform — Substack or Beehiiv — to follow Joe’s latest insights & updates.
+          Subscribe to <strong>The Samurai Dispatch</strong> - weekly notes on
+          <em> discipline, purpose, and lightness.</em>
         </p>
 
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {/* SUBSTACK */}
-          <div className="relative bg-white/10 rounded-lg p-2 shadow-md backdrop-blur border border-white/10 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transform hover:-translate-y-0.5 transition-all duration-300">
-            <div className="absolute -top-3 left-5 bg-[#ff6719] text-white text-[10px] font-bold px-3 py-0.5 rounded-full shadow">
-              SUBSTACK
-            </div>
+        {/* BEEHIIV SECTION */}
+        <div className="mt-3 bg-white rounded-2xl py-10 px-6 sm:px-12 text-gray-900 shadow-lg max-w-2xl mx-auto">
+          <h3 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900">
+            The Samurai Dispatch
+          </h3>
+          <p className="mt-2 text-lg sm:text-xl text-gray-500">
+            Discipline. Purpose. Lightness
+          </p>
 
-            <div className="text-left mb-2">
-              <h3 className="font-semibold text-base">Essays & Personal Letters</h3>
-              <p className="text-white/70 text-xs">
-                Read reflections, ideas & long-form stories from Joe.
-              </p>
-            </div>
-
-            <iframe
-              src={SUBSTACK_EMBED}
-              width="100%"
-              height="160"
-              style={{
-                border: "1px solid #ccc",
-                background: "white",
-                borderRadius: "10px",
-              }}
-              frameBorder="0"
-              scrolling="no"
-              title="Substack subscribe"
+          <form
+            onSubmit={handleSubmit}
+            className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3"
+          >
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Email"
+              className="w-full sm:w-2/3 rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0b2d42]"
             />
-            <p className="text-[10px] text-white/60 mt-2">Powered by Substack</p>
-          </div>
+            <button
+              type="submit"
+              className="w-full sm:w-auto rounded-lg bg-[#0b2d42] text-white font-medium px-6 py-3 hover:bg-[#143d56] transition"
+            >
+              Subscribe
+            </button>
+          </form>
 
-          {/* BEEHIIV */}
-          <div className="relative bg-white/10 rounded-lg p-2 shadow-md backdrop-blur border border-white/10 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transform hover:-translate-y-0.5 transition-all duration-300">
-            <div className="absolute -top-3 left-5 bg-[#f7d31b] text-black text-[10px] font-bold px-3 py-0.5 rounded-full shadow">
-              BEEHIIV
-            </div>
-
-            <div className="text-left mb-2">
-              <h3 className="font-semibold text-base">News & Launch Updates</h3>
-              <p className="text-white/70 text-xs">
-                Get early access to launches, eBooks, and special promos.
-              </p>
-            </div>
-
-            <iframe
-              src={BEEHIIV_EMBED}
-              width="100%"
-              height="160"
-              style={{
-                border: "1px solid #ccc",
-                background: "white",
-                borderRadius: "10px",
-                boxShadow: "0 0 0 #0000",
-                margin: "0",
-              }}
-              frameBorder="0"
-              scrolling="no"
-              title="Beehiiv subscribe"
-              className="beehiiv-embed"
-              data-test-id="beehiiv-embed"
-            />
-            <p className="text-[10px] text-white/60 mt-2">Powered by Beehiiv</p>
-          </div>
+          <p className="mt-4 text-xs text-gray-400">
+            Powered by Beehiiv · No spam, ever.
+          </p>
         </div>
       </div>
     </section>
