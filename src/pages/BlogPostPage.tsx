@@ -1,6 +1,5 @@
 
 import { useParams, Link } from "react-router-dom"
-import Reveal from "../components/Reveal"
 import { useEffect, useState } from "react"
 import { getBlogPostBySlug, type Post } from "../data/postStore"
 import SafeHtml from "../components/SafeHtml"
@@ -68,17 +67,16 @@ export default function BlogPostPage() {
 
       {/* Article content */}
       <section className="mx-auto max-w-4xl px-6 sm:px-8 lg:px-10 py-14">
-        <Reveal>
-          <article
-            className="bg-white text-[var(--ink)] border border-black p-8 sm:p-10 md:p-12 leading-relaxed"
-            style={{
-              boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
-            }}
-          >
-            {/* Rendu HTML collé depuis l’éditeur (images, iframes, etc.) */}
-            <SafeHtml html={post.content || ""} />
-          </article>
-        </Reveal>
+        <article
+          className="bg-white text-[var(--ink)] border border-black p-8 sm:p-10 md:p-12 leading-relaxed"
+          style={{
+            boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+          }}
+        >
+          {/* Rendu HTML collé depuis l’éditeur (images, iframes, etc.) */}
+          <SafeHtml html={post.content || ""} />
+        </article>
+
 
         <div className="mt-12 flex items-center gap-3">
           <Link to="/blog" className="btn btn-secondary">Back to Blog</Link>

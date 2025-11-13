@@ -1,4 +1,3 @@
-
 import { useEffect, useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import { getBlogPosts, type Post } from "../data/postStore"
@@ -12,7 +11,6 @@ export default function PostPage() {
   const [items, setItems] = useState<Post[] | null>(null)
   const [err, setErr] = useState<string | null>(null)
 
-  // Charge les articles publiés depuis Supabase
   useEffect(() => {
     let alive = true
     ;(async () => {
@@ -44,7 +42,7 @@ export default function PostPage() {
       <header className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="font-display text-4xl sm:text-5xl font-bold">Blog</h1>
-          <p className="mt-2 text-muted">Filtre par catégorie ou recherche un article.</p>
+          <p className="mt-2 text-muted">Filter by category or search for an article.</p>
         </div>
 
         <div className="flex gap-2">
@@ -122,7 +120,7 @@ export default function PostPage() {
       </section>
 
       {items && list.length === 0 && (
-        <p className="text-muted mt-10">Aucun article ne correspond à ta recherche.</p>
+        <p className="text-muted mt-10">No articles match your search.</p>
       )}
     </main>
   )

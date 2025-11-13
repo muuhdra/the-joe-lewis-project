@@ -1,6 +1,4 @@
-
 import { useParams, Link } from "react-router-dom"
-import Reveal from "../components/Reveal"
 import { useEffect, useState } from "react"
 import { getTravelPostBySlug, type Post } from "../data/postStore"
 import SafeHtml from "../components/SafeHtml"
@@ -31,7 +29,9 @@ export default function TravelPostPage() {
       <main className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-20">
         <h1 className="font-display text-3xl font-bold">Not found</h1>
         <p className="text-muted mt-2">{err}</p>
-        <Link to="/travel" className="btn btn-secondary mt-6">Back to Travel</Link>
+        <Link to="/travel" className="btn btn-secondary mt-6">
+          Back to Travel
+        </Link>
       </main>
     )
   }
@@ -57,7 +57,8 @@ export default function TravelPostPage() {
         <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 h-full flex items-end pb-8">
           <div className="rounded-2xl bg-black/35 backdrop-blur px-5 py-4 text-white shadow-lg">
             <p className="text-xs opacity-90">
-              {post.category ?? "Travel"} • {new Date(post.date).toLocaleDateString()}
+              {post.category ?? "Travel"} •{" "}
+              {new Date(post.date).toLocaleDateString()}
             </p>
             <h1 className="mt-1 font-display text-3xl sm:text-4xl font-bold">
               {post.title}
@@ -68,20 +69,22 @@ export default function TravelPostPage() {
 
       {/* Article content */}
       <section className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-10 py-14">
-        <Reveal>
-          <article
-            className="bg-white text-[var(--ink)] border border-black p-8 sm:p-10 md:p-12 leading-relaxed"
-            style={{
-              boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
-            }}
-          >
-            <SafeHtml html={post.content || ""} />
-          </article>
-        </Reveal>
+        <article
+          className="bg-white text-[var(--ink)] border border-black p-8 sm:p-10 md:p-12 leading-relaxed"
+          style={{
+            boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+          }}
+        >
+          <SafeHtml html={post.content || ""} />
+        </article>
 
         <div className="mt-12 flex items-center gap-3">
-          <Link to="/travel" className="btn btn-secondary">Back to Travel</Link>
-          <Link to="/" className="btn">Home</Link>
+          <Link to="/travel" className="btn btn-secondary">
+            Back to Travel
+          </Link>
+          <Link to="/" className="btn">
+            Home
+          </Link>
         </div>
       </section>
     </main>

@@ -1,28 +1,36 @@
-// src/components/ComingSoon.tsx
-import { useMemo, useState } from "react"
+import { useMemo, useRef, useState, useEffect } from "react"
 import Reveal from "./Reveal"
 import { Mail, Brain, Compass, Sparkles, Newspaper } from "lucide-react"
 import { getComing } from "../data/comingSoonStore"
-import { addSubscriber } from "../data/newsletterStore"
+
+// Endpoint backend qui parle à Beehiiv
+const BEEHIIV_SUBSCRIBE_ENDPOINT =
+  import.meta.env.VITE_BEEHIIV_SUBSCRIBE_ENDPOINT || "/api/beehiiv-subscribe"
+
+function isValidEmail(v: string) {
+  // Simple mais suffisant pour filtrer les erreurs grossières
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
+}
 
 export default function ComingSoon() {
   const [email, setEmail] = useState("")
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "err">("idle")
+  const resetTimerRef = useRef<number | null>(null)
 
-  // 1) Pull items from the local store
   const items = getComing()
 
-  // 2) Map icons + sanitize fields, and HIDE the newsletter card here
-  //    (if you also want it gone from the data source, remove it there too)
   const itemsWithIcons = useMemo(() => {
     const pickIcon = (id?: string) => {
       if (!id) return <Sparkles className="h-5 w-5" aria-hidden="true" />
-      if (id.includes("medit")) return <Brain className="h-5 w-5" aria-hidden="true" />
-      if (id.includes("ai")) return <Compass className="h-5 w-5" aria-hidden="true" />
-      if (id.includes("news")) return <Newspaper className="h-5 w-5" aria-hidden="true" />
+      const lower = id.toLowerCase()
+      if (lower.includes("medit")) return <Brain className="h-5 w-5" aria-hidden="true" />
+      if (lower.includes("ai")) return <Compass className="h-5 w-5" aria-hidden="true" />
+      if (lower.includes("news")) return <Newspaper className="h-5 w-5" aria-hidden="true" />
       return <Sparkles className="h-5 w-5" aria-hidden="true" />
     }
+
     return items
+      // on masque l’item newsletter si présent
       .filter(it => !(it.id || "").toLowerCase().includes("news"))
       .map(it => ({
         ...it,
@@ -34,23 +42,58 @@ export default function ComingSoon() {
       }))
   }, [items])
 
-  // 3) Subscribe handler (wired to Supabase via addSubscriber)
+  useEffect(() => {
+    return () => {
+      if (resetTimerRef.current) window.clearTimeout(resetTimerRef.current)
+    }
+  }, [])
+
   async function onNotify(e: React.FormEvent) {
     e.preventDefault()
-    if (!email.trim()) return
+    const trimmed = email.trim()
+
+    if (!trimmed || !isValidEmail(trimmed)) {
+      setStatus("err")
+      // petit reset visuel
+      if (resetTimerRef.current) window.clearTimeout(resetTimerRef.current)
+      resetTimerRef.current = window.setTimeout(() => setStatus("idle"), 2000) as any
+      return
+    }
+
     try {
       setStatus("loading")
-      await addSubscriber(email.trim())
-      setStatus("ok")
-      setEmail("")
+
+      const res = await fetch(BEEHIIV_SUBSCRIBE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmed }),
+      })
+
+      // succès possibles: 200, 201, 204
+      if (res.ok) {
+        setStatus("ok")
+        setEmail("")
+      } else {
+        // essaie de lire un message d’erreur JSON, sinon générique
+        let msg = "Failed to subscribe"
+        try {
+          const data = await res.json()
+          if (data?.error) msg = data.error
+        } catch {}
+        console.error("[subscribe] error:", res.status, msg)
+        setStatus("err")
+      }
     } catch (err) {
       console.error(err)
       setStatus("err")
     } finally {
-      // soft reset of the banner after a short delay
-      setTimeout(() => setStatus("idle"), 2500)
+      if (resetTimerRef.current) window.clearTimeout(resetTimerRef.current)
+      resetTimerRef.current = window.setTimeout(() => setStatus("idle"), 2500) as any
     }
   }
+
+  const disabled =
+    status === "loading" || !email.trim() || !isValidEmail(email.trim())
 
   return (
     <section id="coming-soon" className="py-9" style={{ background: "var(--bg)" }}>
@@ -89,17 +132,33 @@ export default function ComingSoon() {
               </div>
               <button
                 type="submit"
-                disabled={status === "loading"}
-                className="btn btn-primary whitespace-nowrap"
+                disabled={disabled}
+                className="btn btn-primary whitespace-nowrap disabled:opacity-60"
                 aria-label="Notify me when features launch"
               >
-                {status === "loading" ? "Sending…" : status === "ok" ? "Thanks! 🎉" : "Notify me"}
+                {status === "loading"
+                  ? "Sending…"
+                  : status === "ok"
+                  ? "Thanks! 🎉"
+                  : status === "err"
+                  ? "Try again"
+                  : "Notify me"}
               </button>
+              {/* zone d’état accessible */}
+              <span className="sr-only" aria-live="polite">
+                {status === "loading"
+                  ? "Sending"
+                  : status === "ok"
+                  ? "Subscribed"
+                  : status === "err"
+                  ? "Error"
+                  : ""}
+              </span>
             </form>
           </Reveal>
         </div>
 
-        {/* Empty state */}
+        {/* Cards */}
         {itemsWithIcons.length === 0 ? (
           <Reveal delay={0.08}>
             <div
@@ -127,7 +186,6 @@ export default function ComingSoon() {
 
                     {it.desc && <p className="mt-3 text-sm text-muted flex-1">{it.desc}</p>}
 
-                    {/* ETA + progress */}
                     <div className="mt-5">
                       <div className="flex items-center justify-between text-xs text-muted mb-1">
                         <span>{it.eta}</span>
@@ -153,7 +211,6 @@ export default function ComingSoon() {
                     </div>
                   </div>
 
-                  {/* Badge */}
                   <span
                     className="absolute right-3 top-3 rounded-full px-2.5 py-1 text-[11px] font-medium text-white"
                     style={{ background: "var(--accent)" }}
